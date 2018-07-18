@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Check In QaRd</string>
+    <string name="checkin">Bater Cartão</string>
+    <string name="history">Histórico</string>
+</resources>
