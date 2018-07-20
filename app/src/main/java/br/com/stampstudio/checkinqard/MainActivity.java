@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
+    private String KEY = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,20 @@ public class MainActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if(result.getContents() != null) {
-            Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
+            if(result.getContents().equals(KEY)) {
+                Date date = new Date();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+                int second = calendar.get(Calendar.SECOND);
+
+                Toast.makeText(this,  "Registro realizado com sucesso", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "QR Code inválido", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         super.onActivityResult(requestCode, resultCode, data);
