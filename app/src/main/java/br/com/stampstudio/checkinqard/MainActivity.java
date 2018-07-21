@@ -15,7 +15,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
-    private String KEY = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        String KEY = Helper.getConfigValue(this, "qr_key");
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
         if(result.getContents() != null) {
