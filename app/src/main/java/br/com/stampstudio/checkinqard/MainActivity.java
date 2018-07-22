@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -60,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // response
-                                Log.d("Response", response);
-                                Toast.makeText(MainActivity.this,  "Registro realizado com sucesso", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,  response, Toast.LENGTH_SHORT).show();
 
                             }
                         },
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // error
-                                Log.d("Error.Response", error.toString());
+                                Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ) {
