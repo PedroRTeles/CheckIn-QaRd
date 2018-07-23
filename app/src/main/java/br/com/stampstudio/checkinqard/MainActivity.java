@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
+    private TextView txtNextCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnCheckin = findViewById(R.id.btnCheckin);
+        txtNextCard = findViewById(R.id.txtNextCard);
 
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +44,40 @@ public class MainActivity extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
+        String nextCardURL = Helper.getConfigValue(this, "nextcard_url");
+
+        RequestQueue nextCard = Volley.newRequestQueue(this);
+
+        StringRequest nextCardRequest = new StringRequest(Request.Method.POST, nextCardURL,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        txtNextCard.setText(response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<>();
+                params.put("idEmployee", "1");
+
+                return params;
+            }
+        };
+
+        nextCard.add(nextCardRequest);
     }
 
     @Override
@@ -60,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 // response
                                 Toast.makeText(MainActivity.this,  response, Toast.LENGTH_SHORT).show();
-
                             }
                         },
                         new Response.ErrorListener()
@@ -77,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     {
                         Map<String, String>  params = new HashMap<>();
                         params.put("idEmployee", "1");
-                        params.put("checkinType", "1");
 
                         return params;
                     }
