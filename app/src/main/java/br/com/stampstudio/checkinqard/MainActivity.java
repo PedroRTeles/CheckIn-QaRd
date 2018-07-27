@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.android.volley.Request;
@@ -23,6 +26,8 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import br.com.stampstudio.checkinqard.Model.Day;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
@@ -63,7 +68,39 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(String response) {
                                 // response
-                                System.out.println(response);
+                                ArrayList<Day> listDays = new ArrayList<>();
+
+                                try {
+                                    JSONArray allDays = new JSONArray(response);
+
+                                    for(int i = 0; i < allDays.length(); i++) {
+                                        Day day = new Day();
+                                        JSONObject JSONday = allDays.getJSONObject(i);
+
+                                        String date = JSONday.getString("date");
+
+                                        JSONArray checkins = JSONday.getJSONArray("checkin");
+
+                                        day.setDate(date);
+
+                                        String time[] = new String[4];
+                                        int type[] = new int[4];
+
+                                        for(int j = 0; j < checkins.length(); j++) {
+                                            JSONObject checkin = checkins.getJSONObject(j);
+
+                                            time[j] = checkin.getString("time");
+                                            type[j] = checkin.getInt("type");
+                                        }
+
+                                        day.setTime(time);
+                                        day.setType(type);
+
+                                        listDays.add(day);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         },
                         new Response.ErrorListener()
