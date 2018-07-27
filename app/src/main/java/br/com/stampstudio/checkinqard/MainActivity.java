@@ -20,8 +20,13 @@ import com.android.volley.toolbox.Volley;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
+    private Button btnHistory;
     private TextView txtNextCard;
 
     @Override
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnCheckin = findViewById(R.id.btnCheckin);
+        btnHistory = findViewById(R.id.btnHistory);
         txtNextCard = findViewById(R.id.txtNextCard);
 
         btnCheckin.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +48,44 @@ public class MainActivity extends AppCompatActivity {
                 integrator.setBeepEnabled(true);
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RequestQueue history = Volley.newRequestQueue(MainActivity.this);
+                String historyURL = Helper.getConfigValue(MainActivity.this, "history_url");
+
+                StringRequest historyRequest = new StringRequest(Request.Method.POST, historyURL,
+                        new Response.Listener<String>()
+                        {
+                            @Override
+                            public void onResponse(String response) {
+                                // response
+                                System.out.println(response);
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams()
+                    {
+                        Map<String, String>  params = new HashMap<>();
+                        params.put("idEmployee", "1");
+
+                        return params;
+                    }
+                };
+
+                history.add(historyRequest);
             }
         });
 
