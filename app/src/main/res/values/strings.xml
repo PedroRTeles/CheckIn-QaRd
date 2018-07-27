@@ -4,4 +4,8 @@
     <string name="history">Histórico</string>
     <string name="next_card">PRÓXIMO CARTÃO:</string>
     <string name="loading">Carregando…</string>
+    <string name="entrance">Entrada</string>
+    <string name="interval">Intervalo</string>
+    <string name="back">Retorno</string>
+    <string name="exit">Saída</string>
 </resources>
