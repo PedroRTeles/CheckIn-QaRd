@@ -1,6 +1,8 @@
-package br.com.stampstudio.checkinqard.Model;
+package br.com.stampstudio.checkinqard.model;
 
-public class Day {
+import java.io.Serializable;
+
+public class Day implements Serializable {
     private String Date;
     private String Time[];
     private int Type[];
