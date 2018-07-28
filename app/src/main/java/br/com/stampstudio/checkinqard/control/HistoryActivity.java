@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import br.com.stampstudio.checkinqard.HistoryAdapter;
+import br.com.stampstudio.checkinqard.util.HistoryAdapter;
 import br.com.stampstudio.checkinqard.R;
 import br.com.stampstudio.checkinqard.model.Day;
 

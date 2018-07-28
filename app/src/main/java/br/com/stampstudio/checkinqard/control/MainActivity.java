@@ -26,7 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.stampstudio.checkinqard.Helper;
+import br.com.stampstudio.checkinqard.util.Helper;
 import br.com.stampstudio.checkinqard.R;
 import br.com.stampstudio.checkinqard.model.Day;
 

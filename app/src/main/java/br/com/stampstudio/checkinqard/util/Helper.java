@@ -1,4 +1,4 @@
-package br.com.stampstudio.checkinqard;
+package br.com.stampstudio.checkinqard.util;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,6 +7,8 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import br.com.stampstudio.checkinqard.R;
 
 public class Helper {
     private static final String TAG = "Helper";
