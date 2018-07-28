@@ -1,4 +1,4 @@
-package br.com.stampstudio.checkinqard;
+package br.com.stampstudio.checkinqard.control;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.android.volley.Request;
@@ -27,7 +26,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.stampstudio.checkinqard.Model.Day;
+import br.com.stampstudio.checkinqard.Helper;
+import br.com.stampstudio.checkinqard.R;
+import br.com.stampstudio.checkinqard.model.Day;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnCheckin;
@@ -101,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+
+                                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                                intent.putExtra("HISTORY_LIST", listDays);
+                                startActivity(intent);
                             }
                         },
                         new Response.ErrorListener()
