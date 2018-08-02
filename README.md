@@ -29,6 +29,6 @@ You guys are AWESOME!
 
 ## License
 
-This application is free (and open source) software.
-Licensed under the MIT License
+This application is free (and open source) software. <br/>
+Licensed under the MIT License <br/>
 Copyright 2018 - Pedro Teles
