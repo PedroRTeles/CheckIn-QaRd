@@ -1,7 +1,7 @@
 # QaRd - Your check-in card
 
-**QaRd** is a Android application that helps you keep tracking on your daily routine. 
-It can be used on your **Office**, your **Home**, your **College** or anywhere you need to check-in.
+**QaRd** is a Android application that helps you keep tracking on your daily routine. <br/>
+It can be used on your **Office**, your **Home**, your **College** or anywhere you need to check-in. <br/>
 Download the Web Service [here](https://github.com/PedroRTeles/QaRd-WebService) and configure the way you need it!
 
 ## Contributing
