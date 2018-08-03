@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnHistory = findViewById(R.id.btnHistory);
         txtNextCard = findViewById(R.id.txtNextCard);
 
+        btnCheckin.setEnabled(false);
+
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // response
                         txtNextCard.setText(response);
+                        btnCheckin.setEnabled(true);
                     }
                 },
                 new Response.ErrorListener()
