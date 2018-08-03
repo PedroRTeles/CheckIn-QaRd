@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnHistory;
     private TextView txtNextCard;
 
+    String type[] = {"Entrada", "Intervalo", "Retorno do Intervalo", "Saída"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,6 +183,15 @@ public class MainActivity extends AppCompatActivity {
                         {
                             @Override
                             public void onResponse(String response) {
+                                if(txtNextCard.getText().equals(type[0])) {
+                                    txtNextCard.setText(type[1]);
+                                } else if(txtNextCard.getText().equals(type[1])) {
+                                    txtNextCard.setText(type[2]);
+                                } else if(txtNextCard.getText().equals(type[2])) {
+                                    txtNextCard.setText(type[3]);
+                                } else {
+                                    txtNextCard.setText(type[0]);
+                                }
 
                                 Toast.makeText(MainActivity.this,  response, Toast.LENGTH_SHORT).show();
                             }
