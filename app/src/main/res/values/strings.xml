@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Check In QaRd</string>
+    <string name="app_name">QaRd</string>
     <string name="checkin">Bater Cartão</string>
     <string name="history">Histórico</string>
     <string name="next_card">PRÓXIMO CARTÃO:</string>
