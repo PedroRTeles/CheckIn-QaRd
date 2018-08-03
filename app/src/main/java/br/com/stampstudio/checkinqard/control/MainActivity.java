@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Bater Cartão");
+                integrator.setPrompt("Escanear Código");
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(true);
                 integrator.setBarcodeImageEnabled(false);
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // error
-                                Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,  "Erro ao acessar o servidor. Tente novamente!", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ) {
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // error
-                        Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,  "Erro ao acessar o servidor. Tente novamente!", Toast.LENGTH_SHORT).show();
                     }
                 }
         ) {
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                         {
                             @Override
                             public void onResponse(String response) {
-                                // response
+
                                 Toast.makeText(MainActivity.this,  response, Toast.LENGTH_SHORT).show();
                             }
                         },
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // error
-                                Toast.makeText(MainActivity.this,  "Opa! Algo deu errado!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,  "Erro ao acessar o servidor. Tente novamente!", Toast.LENGTH_SHORT).show();
                             }
                         }
                 ) {
